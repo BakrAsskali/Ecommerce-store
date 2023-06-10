@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block title %}Categories{% endblock %}
+{% block body %}
+<a href="#" onclick="history.back();">
+  <i></i>
+  <span class="sr-only">Retour</span>
+</a>
+{% for message in app.flashes('edited') %}
+  <div>
+    {{ message }}
+  </div>
+{% endfor %}
+{% for message in app.flashes('success') %}
+  <div>
+    {{ message }}
+  </div>
+{% endfor %}
+{% for message in app.flashes('danger') %}
+  <div>
+    {{ message }}
+  </div>
+{% endfor %}
+{% if categories %}
+<table id="categories">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for category in categories %}
+    <tr>
+      <td>{{ category.name }}</td>
+      <td>
+        <a href="/category/{{ category.id }}">Products</a>
+        <a href="/category/edit/{{ category.id }}">Edit</a>
+        <a href="/category/delete/{{ category.id }}" onclick="return confirm('Do you want to delete {{ category.name }}?')">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No categories</p>
+{% endif %}
+{% endblock %}

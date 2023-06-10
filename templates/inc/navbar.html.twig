@@ -1,0 +1,65 @@
+<nav>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <div class="container d-flex">
+    {% if app.user %}
+    <a href="{{ path('home') }}" >Store</a>
+    <div id="mobile-nav">
+      <ul>
+        <li>
+          <a href="{{ path('app_product') }}">
+            <i class="fas fa-shopping-basket"></i>
+            All my Products
+          </a>
+        </li>
+        <li>
+          <a href="{{ path('app_productb') }}">
+            <i></i>
+            All Products
+          </a>
+        </li>
+        <li>
+          <a href="{{ path('new_product') }}">
+            <i></i>
+            Add New Product
+          </a>
+        </li>
+        <li>
+          <a href="{{ path('app_category') }}">
+            <i></i> All Categories
+          </a>
+        </li>
+        <li>
+          <a href="{{ path('new_category') }}">
+            <i></i>
+            Add New Category
+          </a>
+        </li>
+        <li>
+          <a href="{{ path('app_cart') }}">
+            <i></i>
+            My cart
+          </a>
+        </li>
+        <li>
+          <a href="{{ path('app_purchase') }}">
+            <i></i>
+            My purchases
+          </a>
+        </li>
+        <li>
+          <a href="#" id="user-dropdown" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user"></i>
+          </a>
+          <div aria-labelledby="user-dropdown">
+            <a href="{{ path('security.logout') }}">Logout</a>
+            <a href="{{ path('user.edit', {'id': app.user.id}) }}">Edit Profile</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</nav>

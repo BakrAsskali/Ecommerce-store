@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste des Produits{% endblock %}
+{% block body %}
+    <a href="#" onclick="history.back();">
+        <i></i>
+        <span>Retour</span>
+    </a>
+    <div>
+        <p><b>There are <strong>{{ products|length }}</strong> products in total!</b></p>
+    </div>
+
+    {% for message in app.flashes('edited') %}
+        <div>
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('success') %}
+        <div>
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div>
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% if products %}
+        <table id="products">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Picture</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }} Dhs</td>
+                    <td><img src="{{ asset('/images/' ~ product.brochureFilename) }}" width="50" height="50"></td>
+                    <td>
+                        <a href="/product/details/{{ product.id }}">Details</a>
+                        <a href="/product/edit/{{ product.id }}">Edit</a>
+                        <a href="/product/delete/{{ product.id }}" onclick="return confirm('Do you want to delete {{ product.name }}?')">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Aucun produit</p>
+    {% endif %}
+{% endblock %}

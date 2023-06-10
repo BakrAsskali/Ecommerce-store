@@ -1,0 +1,40 @@
+{% extends 'baseb.html.twig' %}
+
+{% block body %}
+    <a href="#" onclick="history.back();">
+        <i></i>
+        <span>Retour</span>
+    </a>
+    <style>
+        .card-img-top:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+
+    <div>
+        <div>
+            <div class="col-md-8 col-lg-6 col-xl-4">
+                <div>
+                    <img src="{{ asset('/images/' ~ product.brochureFilename) }}" alt="Apple Computer">
+                    <div>
+                        <div>
+                            <h5>{{ product.name }}</h5>
+                            <p>{{ product.description }}</p>
+                        </div>
+                        <div>
+                            <div>
+                                <span>Category</span>
+                                <span>{{ product.category.name }}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <span>Price</span>
+                            <span>{{ product.price }} Dhs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

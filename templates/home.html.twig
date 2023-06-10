@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% for message in app.flashes('edited') %}
+     <div class="alert alert-success col no-padding">
+       {{ message }}
+      </div>
+ {% endfor %}
+{% for message in app.flashes('success') %}
+     <div class="alert alert-success">
+       {{ message }}
+      </div>
+ {% endfor %}
+{% for message in app.flashes('danger') %}
+ <div class="alert alert-danger">
+ {{ message }}
+    </div>
+{% endfor %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Our E-commerce Store</title>
+</head>
+
+<body>
+  <div>
+    <div>
+      <h1>Welcome</h1>
+      <p>Shop the latest trends in fashion, electronics, home decor, and more!</p>
+      <div>
+        <a href="{{ path('app_product')}}">Show products</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+{% endblock %}
